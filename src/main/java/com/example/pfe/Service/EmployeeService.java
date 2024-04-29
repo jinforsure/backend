@@ -3,6 +3,8 @@ package com.example.pfe.Service;
 import com.example.pfe.Dto.Employee.RequestEmployee;
 import com.example.pfe.Dto.Employee.RequestEmployeeUpdate;
 import com.example.pfe.Dto.Employee.ResponseEmployee;
+import com.example.pfe.Dto.LoginDTO;
+import com.example.pfe.Dto.LoginMessage;
 import com.example.pfe.Entities.Employee;
 
 import java.util.List;
@@ -14,5 +16,5 @@ public interface EmployeeService {
     Employee updateEmployee(Long id, RequestEmployeeUpdate employeeRequest);
     ResponseEmployee getEmployeeById(Long id);
    // ResponseEmployee getEmployeeByIdwithTask(Long id);
-    //LoginMessage loginEmployee(LoginDTO loginDTO);
+    LoginMessage loginEmployee(LoginDTO loginDTO);
 }

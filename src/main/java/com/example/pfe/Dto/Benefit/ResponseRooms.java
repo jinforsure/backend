@@ -23,7 +23,6 @@ public class ResponseRooms {
     private Instant createdAt;
     private Instant updatedAt;
     private ResponseBenefit benefit;
-
     public static ResponseRooms makeRooms(Rooms rooms){
         return ResponseRooms.builder()
                 .id(rooms.getId())

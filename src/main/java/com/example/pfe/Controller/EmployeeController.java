@@ -3,6 +3,8 @@ package com.example.pfe.Controller;
 import com.example.pfe.Dto.Employee.RequestEmployee;
 import com.example.pfe.Dto.Employee.RequestEmployeeUpdate;
 import com.example.pfe.Dto.Employee.ResponseEmployee;
+import com.example.pfe.Dto.LoginDTO;
+import com.example.pfe.Dto.LoginMessage;
 import com.example.pfe.Service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -58,10 +60,10 @@ public class EmployeeController {
                 Collections.singletonMap("message","id does not exsist"));
     }
 
-    /*@PostMapping(path = "/login")
+    @PostMapping(path = "/login")
     public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO){
         LoginMessage loginMessage = employeeService.loginEmployee(loginDTO);
         return ResponseEntity.ok(loginMessage);
-    }*/
+    }
 
 }

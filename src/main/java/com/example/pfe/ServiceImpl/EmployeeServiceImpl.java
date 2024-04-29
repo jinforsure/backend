@@ -3,6 +3,8 @@ package com.example.pfe.ServiceImpl;
 import com.example.pfe.Dto.Employee.RequestEmployee;
 import com.example.pfe.Dto.Employee.RequestEmployeeUpdate;
 import com.example.pfe.Dto.Employee.ResponseEmployee;
+import com.example.pfe.Dto.LoginDTO;
+import com.example.pfe.Dto.LoginMessage;
 import com.example.pfe.Entities.Employee;
 import com.example.pfe.Repository.EmployeeRepository;
 import com.example.pfe.Service.EmployeeService;
@@ -36,17 +38,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void createEmployee(RequestEmployee employeeRequest) {
-        Employee employee = Employee.builder()
-                .lastName(employeeRequest.getLastName())
-                .firstName(employeeRequest.getFirstName())
-                .phoneNumber(employeeRequest.getPhoneNumber())
-                .address(employeeRequest.getAddress())
-                .email(employeeRequest.getEmail())
-                .password(employeeRequest.getPassword())
-                .account_type(employeeRequest.getAccount_type())
-                .department(employeeRequest.getDepartment())
-                .job(employeeRequest.getJob())
-                .build();
+        Employee employee = new Employee(
+                employeeRequest.getId(),
+                employeeRequest.getFirstName(),
+                employeeRequest.getLastName(),
+                employeeRequest.getPhoneNumber(),
+                employeeRequest.getAddress(),
+                employeeRequest.getEmail(),
+                this.passwordEncoder.encode(employeeRequest.getPassword()),
+                employeeRequest.getAccount_type(),
+                employeeRequest.getDepartment(),
+                employeeRequest.getJob()
+
+        );
+
         employeeRepository.save(employee);
     }
 
@@ -56,8 +61,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return ResponseEmployee.makeEmployee((employee.get()));
     }
 
-    //@Override
-   /* public LoginMessage loginEmployee(LoginDTO loginDTO) {
+    @Override
+    public LoginMessage loginEmployee(LoginDTO loginDTO) {
         String msg ="";
         Employee employee1 = employeeRepository.findByEmail(loginDTO.getEmail() );
         if(employee1 != null) {
@@ -77,7 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         } else{
                 return new LoginMessage("email does not match", false);
             }
-    }*/
+    }
 
     @Override
     public Employee updateEmployee(Long id, RequestEmployeeUpdate employeeRequest) {

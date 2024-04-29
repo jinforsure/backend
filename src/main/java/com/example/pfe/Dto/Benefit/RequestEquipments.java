@@ -24,4 +24,5 @@ public class RequestEquipments {
     String maintenance_status;
     @Min(value = 1 , message = "benefit is required")
     Long benefitId;
+
 }

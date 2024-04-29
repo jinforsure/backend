@@ -19,4 +19,5 @@ public class RequestRooms {
     Integer capacity;
     @Min(value = 1 , message = "benefit is required")
     Long benefitId;
+
 }

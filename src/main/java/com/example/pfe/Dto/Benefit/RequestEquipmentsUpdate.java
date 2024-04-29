@@ -18,4 +18,5 @@ public class RequestEquipmentsUpdate {
     Integer price;
     String maintenance_status;
     Long benefitId;
+
 }

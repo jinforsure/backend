@@ -1,4 +1,4 @@
-package com.example.pfe.Dto.Benefit;
+package com.example.pfe.Dto.Reservation;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestRoomsUpdate {
+public class RequestReservationUpdate {
     Long id;
-    String maintenance_status;
-    Integer capacity;
-    Long benefitId;
+    String departDate;
+    String departHour;
+    String returnHour;
 
 }

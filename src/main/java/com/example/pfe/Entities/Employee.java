@@ -35,5 +35,16 @@ public class Employee  {
     @UpdateTimestamp
     private Instant updatedAt;
 
-
+    public Employee(Long id, String firstName, String lastName, int phoneNumber, String address, String email, String password, String account_type, String department, String job) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.email = email;
+        this.password = password;
+        this.account_type = account_type;
+        this.department = department;
+        this.job = job;
+    }
 }

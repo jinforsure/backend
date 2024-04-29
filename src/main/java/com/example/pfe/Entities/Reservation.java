@@ -6,35 +6,35 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "rooms")
+@Table(name = "reservation")
 @Builder
-public class Rooms {
+public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    Long equipmentsId;
+    Long roomsId;
     String name;
-    String type;
-    String location;
-    String maintenance_status;
-    Integer capacity;
+    String category;
+    String subCategory;
+    String departDate;
+    String departHour;
+    String returnHour;
 
     @CreationTimestamp
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "benefit_id")
-    private Benefit benefit;
-
-    @ManyToOne
-    @JoinColumn(name = "reservation_id")
-    private Reservation reservation;
-
+    @OneToMany(mappedBy = "reservation")
+    private List<Equipments> equipments ;
+    @OneToMany(mappedBy = "reservation")
+    private List<Rooms> rooms ;
 }

@@ -39,4 +39,8 @@ public class Equipments {
     @JoinColumn(name = "benefit_id")
     private Benefit benefit;
 
+    @ManyToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
+
 }
