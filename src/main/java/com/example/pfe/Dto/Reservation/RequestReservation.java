@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequestReservation {
     Long id;
+
+    String username;
     Long equipmentsId;
     Long roomsId;
     String name;
@@ -19,5 +21,7 @@ public class RequestReservation {
     String departDate;
     String departHour;
     String returnHour;
+    String state;
+    String benefit_status;
 
 }

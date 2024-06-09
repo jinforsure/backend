@@ -19,6 +19,7 @@ public class ApplicationConfig  implements WebMvcConfigurer {
                 .allowedMethods("GET","POST","PUT","DELETE")
                 .allowedHeaders("Origin","X-Requested-With","content-Type","Accept")
                 .allowCredentials(true);
+
     }
 
     @Bean

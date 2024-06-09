@@ -1,7 +1,7 @@
 package com.example.pfe.ServiceImpl;
 
-import com.example.pfe.Dto.Reservation.RequestReservationUpdate;
 import com.example.pfe.Dto.Reservation.RequestReservation;
+import com.example.pfe.Dto.Reservation.RequestReservationUpdate;
 import com.example.pfe.Dto.Reservation.ResponseReservation;
 import com.example.pfe.Entities.Reservation;
 import com.example.pfe.Repository.ReservationRepository;
@@ -42,12 +42,18 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void createReservation(RequestReservation requestReservation) {
         Reservation reservation = Reservation.builder()
+                .equipmentsId(requestReservation.getEquipmentsId())
+                .username(requestReservation.getUsername())
                 .name(requestReservation.getName())
                 .category(requestReservation.getCategory())
                 .subCategory(requestReservation.getSubCategory())
+                .roomsId(requestReservation.getRoomsId())
+                .equipmentsId(requestReservation.getEquipmentsId())
                 .departDate(requestReservation.getDepartDate())
                 .departHour(requestReservation.getDepartHour())
                 .returnHour(requestReservation.getReturnHour())
+                .state(requestReservation.getState())
+                .benefit_status(requestReservation.getBenefit_status())
                 .build();
         reservationRepository.save(reservation);
 
@@ -57,10 +63,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation updateReservation(Long id, RequestReservationUpdate reservationUpdate) {
         Reservation reservation = reservationRepository.findById(id).orElseThrow();
-        if (reservationUpdate.getDepartDate() != null){
-            reservation.setDepartDate(reservationUpdate.getDepartDate());
+        if (reservationUpdate.getState() != null){
+            reservation.setState(reservationUpdate.getState());
         }
-
+        if (reservationUpdate.getBenefit_status() != null){
+            reservation.setBenefit_status(reservationUpdate.getBenefit_status());
+        }
         return reservationRepository.save(reservation);
     }
 
@@ -69,8 +77,6 @@ public class ReservationServiceImpl implements ReservationService {
         Optional<Reservation> reservation = reservationRepository.findById(id);
         return ResponseReservation.makeReservation((reservation.get()));
     }
-
-
 
 
 

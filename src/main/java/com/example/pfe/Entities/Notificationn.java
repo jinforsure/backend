@@ -1,5 +1,6 @@
 package com.example.pfe.Entities;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,28 +13,41 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "reservation")
+@Table(name = "notificationn")
 @Builder
-public class Reservation {
+public class Notificationn {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     Long id;
-    Long equipmentsId;
-    Long roomsId;
-    String username;
-    String name;
-    String category;
-    String subCategory;
-    String departDate;
-    String departHour;
-    String returnHour;
-    String state;
-    String benefit_status;
+    String date_envoi;
+    String date_reception;
+    String heure;
+    String type;
+    String titre;
+    String message;
+    String receiver;
+    String statut_lecture;
+    Long id_employee;
+
+
 
     @CreationTimestamp
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

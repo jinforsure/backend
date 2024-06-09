@@ -23,6 +23,8 @@ public class Rooms {
     String location;
     String maintenance_status;
     Integer capacity;
+    String state;
+    private String category="Rooms";
 
     @CreationTimestamp
     private Instant createdAt;

@@ -14,6 +14,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class ResponseEmployee {
     Long id;
+    String username;
     String firstName;
     String lastName;
     int phoneNumber;
@@ -23,20 +24,24 @@ public class ResponseEmployee {
     String account_type;
     String department;
     String job;
+    String state="Active";
     private Instant createdAt;
     private Instant updatedAt;
 
     public static ResponseEmployee makeEmployee(Employee employee){
         return ResponseEmployee.builder()
                 .id(employee.getId())
+                .username(employee.getUsername())
                 .firstName(employee.getFirstName())
                 .lastName(employee.getLastName())
                 .phoneNumber(employee.getPhoneNumber())
+                .address(employee.getAddress())
                 .email(employee.getEmail())
                 .password(employee.getPassword())
                 .account_type(employee.getAccount_type())
                 .department(employee.getDepartment())
                 .job(employee.getJob())
+                .state(employee.getState())
                 .createdAt(employee.getCreatedAt())
                 .updatedAt(employee.getUpdatedAt())
                 .build();

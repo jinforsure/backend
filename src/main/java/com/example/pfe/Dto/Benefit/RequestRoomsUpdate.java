@@ -13,6 +13,8 @@ public class RequestRoomsUpdate {
     Long id;
     String maintenance_status;
     Integer capacity;
+    String state;
     Long benefitId;
+
 
 }

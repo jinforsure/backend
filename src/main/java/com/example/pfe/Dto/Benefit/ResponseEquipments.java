@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.Date;
 
 @Data
 @Builder
@@ -19,14 +18,15 @@ public class ResponseEquipments {
     String type;  //type d'equipment info , securite ..
     String manufactuer; // societe eli san3t el equip
     String model;
-    Date purchase_date; //date d'achat
     Integer quantity;
     Integer price;
     String maintenance_status;
+    private String state;
     Long benefitId;
     private Instant createdAt;
     private Instant updatedAt;
     private ResponseBenefit benefit;
+    private String category="Equipments";
 
     public static ResponseEquipments makeEquipments(Equipments equipments){
         return ResponseEquipments.builder()
@@ -35,10 +35,11 @@ public class ResponseEquipments {
                 .type(equipments.getType())
                 .manufactuer(equipments.getManufactuer())
                 .model(equipments.getModel())
-                .purchase_date(equipments.getPurchase_date())
                 .quantity(equipments.getQuantity())
                 .price(equipments.getPrice())
                 .maintenance_status(equipments.getMaintenance_status())
+                .state(equipments.getState())
+                .category(equipments.getCategory())
                 .benefit(ResponseBenefit.makeBenefit(equipments.getBenefit()))
                 .createdAt(equipments.getCreatedAt())
                 .updatedAt(equipments.getUpdatedAt())

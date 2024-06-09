@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -18,11 +16,13 @@ public class RequestEquipments {
     String type;  //type d'equipment info , securite ..
     String manufactuer; // societe eli san3t el equip
     String model;
-    Date purchase_date; //date d'achat
     Integer quantity;
     Integer price;
     String maintenance_status;
+    String state;
     @Min(value = 1 , message = "benefit is required")
     Long benefitId;
+    private String category="Equipments";
+
 
 }

@@ -8,6 +8,7 @@ import com.example.pfe.Dto.LoginMessage;
 import com.example.pfe.Entities.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
     List<ResponseEmployee> getAllEmployee();
@@ -15,6 +16,15 @@ public interface EmployeeService {
     void createEmployee(RequestEmployee employeeRequest);
     Employee updateEmployee(Long id, RequestEmployeeUpdate employeeRequest);
     ResponseEmployee getEmployeeById(Long id);
+    Optional<Employee> getEmployeeByEmail(String email);
    // ResponseEmployee getEmployeeByIdwithTask(Long id);
     LoginMessage loginEmployee(LoginDTO loginDTO);
+
+    void changePassword(String email, String currentPassword, String newPassword);
+    void resetPassword(String email);
+    void createPasswordResetTokenForEmployee(Employee employee, String token);
+    boolean validatePasswordResetToken(String token);
+    void updatePassword(String token, String newPassword);
+
+
 }

@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequestReservationUpdate {
     Long id;
-    String departDate;
-    String departHour;
-    String returnHour;
+    Long equipmentsId;
+    Long roomsId;
+    String state;
+    String benefit_status;
 
 }

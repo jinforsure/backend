@@ -38,15 +38,17 @@ public class EquipmentsServiceImpl implements EquipmentsService {
     @Override
     public void createEquipments(RequestEquipments equipmentsRequest) {
         Benefit benefit = benefitRepository.findById(equipmentsRequest.getBenefitId()).orElseThrow();
+        equipmentsRequest.setCategory("Equipments");
         Equipments equipments = Equipments.builder()
                 .name(equipmentsRequest.getName())
                 .type(equipmentsRequest.getType())
                 .manufactuer(equipmentsRequest.getManufactuer())
                 .model(equipmentsRequest.getModel())
-                .purchase_date(equipmentsRequest.getPurchase_date())
                 .quantity(equipmentsRequest.getQuantity())
                 .price(equipmentsRequest.getPrice())
                 .maintenance_status(equipmentsRequest.getMaintenance_status())
+                .state(equipmentsRequest.getState())
+                .category(equipmentsRequest.getCategory())
                 .benefit(benefit)
                 .build();
         equipmentsRepository.save(equipments);
@@ -68,16 +70,13 @@ public class EquipmentsServiceImpl implements EquipmentsService {
         if (equipmentsRequest.getPrice() != 0){
             equipments.setPrice(equipmentsRequest.getPrice());
         }
-        if (equipmentsRequest.getPurchase_date() != null){
-            equipments.setPurchase_date(equipmentsRequest.getPurchase_date());
-        }
         if (equipmentsRequest.getMaintenance_status() != null){
             equipments.setMaintenance_status(equipmentsRequest.getMaintenance_status());
         }
-        if (equipmentsRequest.getBenefitId() != null){
-            Benefit benefit = benefitRepository.getById(equipmentsRequest.getBenefitId());
-            equipments.setBenefit(benefit);
+        if (equipmentsRequest.getState() != null){
+            equipments.setState(equipmentsRequest.getState());
         }
+
 
         return equipmentsRepository.save(equipments);
     }

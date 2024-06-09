@@ -17,7 +17,11 @@ public class RequestRooms {
     String location;
     String maintenance_status;
     Integer capacity;
+    String state;
     @Min(value = 1 , message = "benefit is required")
     Long benefitId;
+    private String category="Rooms";
+
+
 
 }

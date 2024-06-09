@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.util.Date;
 
 @Setter
 @Getter
@@ -25,10 +24,11 @@ public class Equipments {
     String type;  //type d'equipment info , securite ..
     String manufactuer; // societe eli san3t el equip
     String model;
-    Date purchase_date; //date d'achat
     Integer quantity;
     Integer price;
     String maintenance_status;
+    String state ;
+    private String category="Equipments";
 
     @CreationTimestamp
     private Instant createdAt;
@@ -42,5 +42,6 @@ public class Equipments {
     @ManyToOne
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
+
 
 }

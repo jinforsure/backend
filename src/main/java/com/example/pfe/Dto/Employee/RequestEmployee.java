@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequestEmployee {
     Long id;
+    String username;
     String firstName;
     String lastName;
     @Max(value = 99999999 , message = "Phone number invalid ")
@@ -30,6 +31,7 @@ public class RequestEmployee {
     @NotBlank(message = "Department name is required")
     String department;
     String job;
+    String state="Active";
 
 
 
